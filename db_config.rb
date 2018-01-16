@@ -3,7 +3,7 @@ require 'active_record'
 
 options = {
   adapter: 'postgresql',
-  database: 'plantloversguide'
+  database: 'plants_db'
 }
 
 ActiveRecord::Base.establish_connection(options)
