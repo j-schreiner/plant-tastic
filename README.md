@@ -1,1 +1,1 @@
-# plant-tastic
+# Plants Database

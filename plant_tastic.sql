@@ -1,4 +1,4 @@
-CREATE DATABASE plant_tastic;
+CREATE DATABASE plant_db;
 
 CREATE TABLE plants (
   id SERIAL PRIMARY KEY,
