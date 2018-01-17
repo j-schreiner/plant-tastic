@@ -23,3 +23,12 @@ CREATE TABLE comments (
   user_id INTEGER NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ); 
+
+
+CREATE TABLE posts (
+  id SERIAL PRIMARY KEY,
+  plant_id INTEGER NOT NULL,
+  FOREIGN KEY (plant_id) REFERENCES plants(id) ON DELETE CASCADE,
+  user_id INTEGER NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);

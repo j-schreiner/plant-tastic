@@ -6,6 +6,7 @@ require_relative 'db_config'
 require_relative 'models/comment'
 require_relative 'models/plant'
 require_relative 'models/user'
+require_relative 'models/post'
 
 enable :sessions
 
@@ -19,20 +20,18 @@ helpers do
   end
 end
 
+# routes
+
 get '/' do
   @plants = Plant.all
   erb :index
-end
-
-get '/login' do 
-  erb :login
 end
 
 get '/users/new' do 
   erb :create
 end
 
-post '/users/new' do
+post '/users' do
   user = User.new
   user.name = params[:name]
   user.email = params[:email]
@@ -42,7 +41,7 @@ post '/users/new' do
   redirect '/'
 end
 
-get 'sessions/new' do
+get '/sessions/new' do
   erb :login
 end
 
@@ -60,7 +59,7 @@ end
 
 delete '/session' do
   session[:user_id] = nil
-  redirect '/login'
+  redirect '/'
 end
 
 get '/plants/new' do
@@ -111,6 +110,13 @@ post '/comments' do
   redirect "/plants/#{comment.plant_id}"
 end
 
+get '/posts' do
+  @plants = Plant.all
+  @plant = Plant.find(params[:id])
+  @post = Post.where(params[:user_id])
+  @comments = Comment.where(plant_id: @plant.id)
+  erb :posts
+end
 
 
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Good Food Hunting</title>
+  <title>Plantbook</title>
   <link rel='stylesheet' href='/stylesheets/main.css'>
 </head>
 <body>
@@ -16,14 +16,21 @@
       <button>logout</button>
     </form>
 
-    <a href="/login">login</a>
-    <a href="/users/new">create account</a>
-    <a href="/plants/new">post new plant</a>
-
-
+    <a href="/posts">My Plants</a>
+    <a href="/plants/new">New Plants</a>
   <% end %>
+
+
+  
+
+  <% if !logged_in? %>
+  <a href="/users/new">create account</a>
+  <a href="/sessions/new">login</a>
+  <% end %>
+
 
   <%= yield %>
 
 </body>
 </html>
+

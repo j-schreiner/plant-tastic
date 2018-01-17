@@ -1,0 +1,6 @@
+<% @plants.each do |plant| %>
+  <a href="/plants/<%=plant.id%>"> 
+     <img src=" <%= plant.image_url %> ">
+  </a>
+<% end %>
+

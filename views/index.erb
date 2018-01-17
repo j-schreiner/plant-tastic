@@ -1,15 +1,7 @@
-<% if logged_in? %>  
-
-  
-
-  <% @plants.each do |plant| %>
+<% @plants.each do |plant| %>
   <p>
     <a href="/plants/<%=plant.id%>"> 
-       <%= plant.name %> 
+       <img src=" <%= plant.image_url %> ">
     </a>
-  </p>
-  <% end %>
-
-
-
+  </p>  
 <% end %>
