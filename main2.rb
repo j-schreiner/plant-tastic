@@ -3,8 +3,8 @@ require 'sinatra/reloader'
 
 require_relative 'db_config'
 
-require_relative 'models/comment'
 require_relative 'models/plant'
+require_relative 'models/comment'
 require_relative 'models/user'
 
 enable :sessions
@@ -24,52 +24,13 @@ get '/' do
   erb :index
 end
 
-get '/login' do 
-  erb :login
-end
-
-get '/users/new' do 
-  erb :create
-end
-
-post '/users/new' do
-  user = User.new
-  user.name = params[:name]
-  user.email = params[:email]
-  user.password = params[:password]
-  user.save
-  session[:user_id] = user.id
-  redirect '/'
-end
-
-get 'sessions/new' do
-  erb :login
-end
-
-post '/session' do
-  user = User.find_by(email: params[:email])
-
-  if user && user.authenticate(params[:password])
-
-    session[:user_id] = user.id #just a hash
-    redirect '/'
-  else
-    erb :login
-  end  
-end
-
-delete '/session' do
-  session[:user_id] = nil
-  redirect '/login'
-end
-
 get '/plants/new' do
-  redirect '/login' unless logged_in?
   erb :new
 end
 
 get '/plants/:id' do
-  redirect '/login' unless logged_in?    
+  redirect '/login' unless logged_in?
+    
   @plant = Plant.find(params[:id])
   @comments = Comment.where(plant_id: @plant.id)
   erb :show
@@ -77,7 +38,6 @@ end
 
 get '/plants/:id/edit' do
   @plant = Plant.find(params[:id])
-  @comments = Comment.where(plant_id: @plant.id)
   erb :edit
 end
 
@@ -111,8 +71,24 @@ post '/comments' do
   redirect "/plants/#{comment.plant_id}"
 end
 
+get '/login' do
+  erb :login
+end
 
+post '/session' do
+  user = User.find_by(email: params[:email])
 
+  if user && user.authenticate(params[:password])
+    session[:user_id] = user.id
+    redirect '/'
+  else
+    erb :login
+  end  
 
+end
 
+delete '/session' do
+  session[:user_id] = nil
+  redirect '/login'
+end
 

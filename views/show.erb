@@ -1,0 +1,36 @@
+<!-- plant image -->
+
+<div class="image_container">
+  <img src="<%=@plant.image_url%>">
+</div>
+
+<!-- information to the right of image -->
+
+<div class="text_info">
+
+  <h2> <%=@plant.name%> </h2>
+
+  <a href="/plants/<%=@plant.id%>/edit">edit</a>
+
+<!-- delete plant/post -->
+
+  <form action="/plants/<%=@plant.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button>delete</button>
+  </form>
+
+<!-- post new comment -->
+
+  <form action="/comments" method="post">
+    <input type="hidden" name="plant_id" value="<%=@plant.id%>">
+    <textarea name="body" id="" cols="30" rows="18"></textarea>
+    <button>post comment</button>
+  </form>
+
+<!-- existing commments -->
+
+  <% @comments.each do |comment| %>
+    <p><%= comment.body%></p>
+  <% end %>
+
+</div>  

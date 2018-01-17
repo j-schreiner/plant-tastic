@@ -1,2 +1,15 @@
-<h1>Plants Database</h1>
+<% if logged_in? %>  
 
+  
+
+  <% @plants.each do |plant| %>
+  <p>
+    <a href="/plants/<%=plant.id%>"> 
+       <%= plant.name %> 
+    </a>
+  </p>
+  <% end %>
+
+
+
+<% end %>

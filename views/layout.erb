@@ -2,10 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Plants Database</title>
+  <title>Good Food Hunting</title>
   <link rel='stylesheet' href='/stylesheets/main.css'>
 </head>
 <body>
+  
+  <h1> My Plant List </h1>
+
+  <% if logged_in? %> 
+    <p>logged in as <%= current_user.email %></p>
+    <form action="/session" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>logout</button>
+    </form>
+
+    <a href="/login">login</a>
+    <a href="/users/new">create account</a>
+    <a href="/plants/new">post new plant</a>
+
+
+  <% end %>
 
   <%= yield %>
 
