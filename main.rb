@@ -6,7 +6,6 @@ require_relative 'db_config'
 require_relative 'models/comment'
 require_relative 'models/plant'
 require_relative 'models/user'
-require_relative 'models/post'
 
 enable :sessions
 
@@ -41,7 +40,7 @@ post '/users' do
   redirect '/'
 end
 
-get '/sessions/new' do
+get '/session/new' do
   erb :login
 end
 
@@ -50,7 +49,7 @@ post '/session' do
 
   if user && user.authenticate(params[:password])
 
-    session[:user_id] = user.id #just a hash
+    session[:user_id] = user.id
     redirect '/'
   else
     erb :login
@@ -84,6 +83,7 @@ post '/plants' do
   plant = Plant.new
   plant.name = params[:name]
   plant.image_url = params[:image_url]
+  plant.user = current_user
   plant.save
   redirect '/'
 end
@@ -110,12 +110,9 @@ post '/comments' do
   redirect "/plants/#{comment.plant_id}"
 end
 
-get '/posts' do
-  @plants = Plant.all
-  @plant = Plant.find(params[:id])
-  @post = Post.where(params[:user_id])
-  @comments = Comment.where(plant_id: @plant.id)
-  erb :posts
+get '/my_plants' do
+  @plants = current_user.plants
+  erb :my_plants
 end
 
 

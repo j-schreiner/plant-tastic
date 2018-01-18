@@ -1,6 +1,10 @@
+<a href="/">Home</a>
+
+
 <% @plants.each do |plant| %>
-  <a href="/plants/<%=plant.id%>"> 
+  <p>
      <img src=" <%= plant.image_url %> ">
-  </a>
+  </p>   
 <% end %>
+
 

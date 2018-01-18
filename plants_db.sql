@@ -10,7 +10,9 @@ CREATE TABLE users (
 CREATE TABLE plants (
   id SERIAL PRIMARY KEY,
   name VARCHAR(300) NOT NULL,
-  image_url VARCHAR(400) NOT NULL
+  image_url VARCHAR(400) NOT NULL,
+  user_id INTEGER NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id) on DELETE CASCADE
 );
 
 # join table: contains the foreign keys
@@ -24,11 +26,3 @@ CREATE TABLE comments (
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ); 
 
-
-CREATE TABLE posts (
-  id SERIAL PRIMARY KEY,
-  plant_id INTEGER NOT NULL,
-  FOREIGN KEY (plant_id) REFERENCES plants(id) ON DELETE CASCADE,
-  user_id INTEGER NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
