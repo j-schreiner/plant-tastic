@@ -1,5 +1,35 @@
 * {
   box-sizing: border-box;
   font-family: 'Roboto Mono', monospace;
+
 }
 
+body{
+
+}
+
+main{
+  width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+a{
+  text-decoration: none;
+  color: 
+}
+
+h1{
+  font-size: 45px;
+  color: #308599;
+}
+
+.all_images{
+  width: 100%;
+}
+
+.index_nav{
+  display: inline-block;
+}

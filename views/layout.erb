@@ -16,18 +16,12 @@
       <input type="hidden" name="_method" value="delete">
       <button>logout</button>
     </form>
-<!-- 
-    <a href="/my_plants">My Plants</a>
-    <a href="/plants/new">New Plant</a> -->
   <% end %>
 
-
+  <main class="layout_erb">
+    <%= yield %>
+  </main>
   
-
-
-
-
-  <%= yield %>
 
 </body>
 </html>
