@@ -3,7 +3,9 @@
 
 <% @plants.each do |plant| %>
   <p>
-     <img src=" <%= plant.image_url %> ">
+    <a href="/plants/<%=plant.id%>"> 
+      <img src=" <%= plant.image_url %> ">
+    </a>
   </p>   
 <% end %>
 

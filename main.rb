@@ -62,12 +62,12 @@ delete '/session' do
 end
 
 get '/plants/new' do
-  redirect '/login' unless logged_in?
+  redirect '/session/new' unless logged_in?
   erb :new
 end
 
 get '/plants/:id' do
-  redirect '/login' unless logged_in?    
+  redirect '/session/new' unless logged_in?    
   @plant = Plant.find(params[:id])
   @comments = Comment.where(plant_id: @plant.id)
   erb :show
