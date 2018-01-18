@@ -84,7 +84,7 @@ post '/plants' do
   plant.name = params[:name]
   plant.image_url = params[:image_url]
   plant.user = current_user
-  plant.save
+  plant.save  
   redirect '/'
 end
 
@@ -106,6 +106,7 @@ post '/comments' do
   comment = Comment.new
   comment.body = params[:body]
   comment.plant_id = params[:plant_id]
+  comment.user = current_user
   comment.save
   redirect "/plants/#{comment.plant_id}"
 end

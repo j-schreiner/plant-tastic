@@ -19,6 +19,14 @@
     <button>delete</button>
   </form>
 
+<!-- existing commments -->
+
+  <% @comments.each do |comment| %>
+    <p><%=comment.user.name%>: <%= comment.body%></p>
+  <% end %>
+
+</div>  
+
 <!-- post new comment -->
 
   <form action="/comments" method="post">
@@ -26,11 +34,3 @@
     <textarea name="body" id="" cols="30" rows="18"></textarea>
     <button>post comment</button>
   </form>
-
-<!-- existing commments -->
-
-  <% @comments.each do |comment| %>
-    <p><%= comment.body%></p>
-  <% end %>
-
-</div>  
