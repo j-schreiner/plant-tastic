@@ -1,14 +1,9 @@
 <a href="/">Home</a>
 
-
-<% @plants.each do |plant| %>
-  <p>
-    <a href="/plants/<%=plant.id%>"> 
-      <img src=" <%= plant.image_url %> ">
-    </a>
-  </p>   
-<% end %>
-
-
-
-
+<div class="all_images">
+  <% @plants.each do |plant| %>
+      <a href="/plants/<%=plant.id%>"> 
+         <img src=" <%= plant.image_url %> ">
+      </a>
+  <% end %>  
+</div>  

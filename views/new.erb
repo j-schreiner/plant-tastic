@@ -8,3 +8,11 @@
 
   <button>post</button>
 </form>  
+
+<div class="all_images">
+  <% @plants.each do |plant| %>
+      <a href="/plants/<%=plant.id%>"> 
+         <img src=" <%= plant.image_url %> ">
+      </a>
+  <% end %>  
+</div>  

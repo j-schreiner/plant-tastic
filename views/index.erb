@@ -1,20 +1,7 @@
-<div class="index_nav">
-  <% if !logged_in? %>
-    <a href="/users/new">create account</a>
-    <a href="/session/new">login</a>
-  <% end %>
-
-  <% if logged_in? %>
-  <a href="/plants/new">post plant</a>
-  <a href="/my_plants">my plants</a>
-  <% end %>  
-</div>
+<div class="all_images">
   <% @plants.each do |plant| %>
-    <div class="all_images">
       <a href="/plants/<%=plant.id%>"> 
          <img src=" <%= plant.image_url %> ">
       </a>
-    </div>  
   <% end %>  
-
-
+</div>  

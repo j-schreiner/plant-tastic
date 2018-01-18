@@ -63,6 +63,7 @@ end
 
 get '/plants/new' do
   redirect '/session/new' unless logged_in?
+  @plants = Plant.all
   erb :new
 end
 

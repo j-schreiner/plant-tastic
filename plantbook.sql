@@ -26,3 +26,13 @@ CREATE TABLE comments (
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ); 
 
+
+
+
+
+-- pg_dump -Fc --no-acl --no-owner -h localhost -U JS plants_db > db.dump
+
+heroku pg:backups:restore 'https://github.com/j-schreiner/plantbook/raw/master/db.dump' DATABASE_URL
+
+
+-- https://github.com/j-schreiner/plantbook/raw/master/db.dump
