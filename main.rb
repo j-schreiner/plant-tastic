@@ -27,10 +27,12 @@ get '/' do
 end
 
 get '/users/new' do 
+  @plants = Plant.all
   erb :create
 end
 
 post '/users' do
+  @plants = Plant.all
   user = User.new
   user.name = params[:name]
   user.email = params[:email]
@@ -41,10 +43,12 @@ post '/users' do
 end
 
 get '/session/new' do
+  @plants = Plant.all
   erb :login
 end
 
 post '/session' do
+  @plants = Plant.all
   user = User.find_by(email: params[:email])
 
   if user && user.authenticate(params[:password])

@@ -7,36 +7,33 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 </head>
 
-<body>
+<body>  
+    <nav>
+      <div class="title">
+        <h1><a href="/">plantbook</a></h1>
+      </div>
+      <div class="links"> 
+        <% if !logged_in? %>
+          <a href="/users/new">join</a>
+          <a href="/session/new">login</a>
+        <% end %>
 
-  <div class="main_nav">
-    <div class="title">  
-      <h1><a href="/">plantbook</a></h1>
-    </div>
+        <% if logged_in? %>
+          <a href="/plants/new">add plant</a>
+          <a href="/my_plants">my plants</a>
+      
+          <form action="/session" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button class="fake_link">logout</button>
+          </form>
+        <% end %>
+      </div>   
+    </nav>
 
-    <div class="layout_nav">    
-      <% if !logged_in? %>
-        <a href="/users/new">join</a>
-        <a href="/session/new">login</a>
-      <% end %>
-
-      <% if logged_in? %>
-        <a href="/plants/new">add plant</a>
-        <a href="/my_plants">my plants</a>
-        <p class="login"><%= current_user.email%></p>
-        <form action="/session" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <button>logout</button>
-        </form>
-      <% end %>  
-    </div>
-  </div>
-
-    <main class="page_container">
-      <%= yield %>
-    </main>
     
+  <%= yield %>
 
-  </body>
+
+</body>
 </html>
 

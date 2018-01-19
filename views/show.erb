@@ -2,37 +2,49 @@
 
 <!-- plant image -->
 
-<div class="image_container">
-  <img src="<%=@plant.image_url%>">
-</div>
+
+<img class="show_image" src="<%=@plant.image_url%>">
+
 
 <!-- information to the right of image -->
 
-<div class="text_info">
+<div class="plant_info">
 
   <h2> <%=@plant.name%> </h2>
 
-  <a href="/plants/<%=@plant.id%>/edit">edit</a>
 
-<!-- delete plant/post -->
+  <div class="post_comment">
+    <form class="post_button" action="/comments" method="post">
+      <input type="hidden" name="plant_id" value="<%=@plant.id%>">
+      <textarea name="body" id="" cols="30" rows="18"></textarea>
+      <button class="fake_link">post comment</button>
+    </form>
+  </div>
 
-  <form action="/plants/<%=@plant.id%>" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <button>delete</button>
-  </form>
 
-<!-- existing commments -->
+  <div class="comments"> 
+    <% @comments.each do |comment| %>
+      <p><%=comment.user.name%>: <%= comment.body%></p>
+    <% end %>
+  </div>
 
-  <% @comments.each do |comment| %>
-    <p><%=comment.user.name%>: <%= comment.body%></p>
-  <% end %>
 
-</div>  
 
-<!-- post new comment -->
+</div> 
 
-  <form action="/comments" method="post">
-    <input type="hidden" name="plant_id" value="<%=@plant.id%>">
-    <textarea name="body" id="" cols="30" rows="18"></textarea>
-    <button>post comment</button>
-  </form>
+  <div class="post_options">
+
+    <a href="/plants/<%=@plant.id%>/edit">edit</a>
+    
+    <form action="/plants/<%=@plant.id%>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button class="fake_link">delete</button>
+    </form> 
+
+  </div>
+
+
+
+
+
+

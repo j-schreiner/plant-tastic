@@ -1,13 +1,10 @@
-<a href="/">Home</a>
-
-<form action="/plants" method="post">
-
+<div class="top_new">
+  <form action="/plants" method="post">
   <input type="text" name="name" placeholder="name">
-
-  <input type="text" name="image_url" placeholder="image url"> 
-
-  <button>post</button>
-</form>  
+  <input type="text" name="image_url" placeholder="image url"><button>post</button>
+</form> 
+</div>
+ 
 
 <div class="all_images">
   <% @plants.each do |plant| %>

@@ -1,11 +1,15 @@
-<h2>Login</h2>
-
-<form action="/session" method="post">
-  <label>email</label>
-  <input type="text" name="email">
-
-  <label>password</label>
-  <input type="password" name="password">
-
-  <button>login</button>
-</form>
+<div class="top_new">
+  <form action="/session" method="post">
+    <input type="text" name="email" placeholder="email">
+    <input type="password" name="password" placeholder="password">
+     <button class="no_button">login</button>
+  </form>
+</div>
+ 
+<div class="all_images">
+  <% @plants.each do |plant| %>
+      <a href="/plants/<%=plant.id%>"> 
+         <img src=" <%= plant.image_url %> ">
+      </a>
+  <% end %>  
+</div>  

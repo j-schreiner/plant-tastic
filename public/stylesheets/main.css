@@ -1,18 +1,51 @@
 * {
   box-sizing: border-box;
   font-family: 'Roboto Mono', monospace;
-
+  color: #308599;
 }
+
+/* layout page / nav */
 
 body{
-  padding: 0 20px;
+  padding: 0 20px;  
 }
 
-main{
-  width: 90vw;
+nav{
   display: flex;
-  justify-content: space-around;
-  align-content: space-around;
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 30px 0;
+}
+
+.links{
+  margin: 0;
+  text-align: right; 
+  display: inline-block;
+}
+
+.links a{
+  margin: 0 10px;
+}
+
+.title{
+  text-align: left;
+  display: inline-block;
+}
+
+nav form{
+  display: inline-block;
+}
+
+.fake_link{
+  border: none;
+  font-size: 16px;
+}
+
+/* yield body sections for each page */
+
+input{
+  border: 1px solid #308599;
 }
 
 a{
@@ -22,57 +55,78 @@ a{
 
 a :hover{
   opacity: 0.5;
-
 }
 
 p{
-  color: #308599;
   margin: 10px;
 }
 
 h1{
   font-size: 45px;
-  color: #308599;
-  margin: 40px 0 0 0;
+  margin: 0 0 0 0;
 }
 
-.all_images a{
-  display: inline-block;
+.all_images{
+  margin: 30px 0 0 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .all_images a img{
-  margin: 10px 5px;
+  margin: 10px 10px;
   vertical-align: text-top;
   object-fit: cover;
-  width:23vw;
-  height:23vw;
-}
-
-.main_nav{
-  align-items: baseline;
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 0 30px 0;
-}
-
-.layout_nav{
-  display: flex;
-  justify-content: flex-end;
-  align-items: baseline;
-}
-
-.layout_nav a{
-  margin: 0 10px 0 10px;
-  display: inline-block;
+  width:22vw;
+  height:22vw;
 }
 
 .login{
-display: flex;
-justify-content: space-between;
+  margin: 0;
+  padding-top: 30px; 
+  color: lightgray;
+  text-align: right;  
 }
 
-.page_container{
-display: flex;
-justify-content: space-between;
-width: 100%;
+.top_new{
+  display: block;
 }
+
+/* show erb css */
+
+.show_image{
+  max-width: 30vw;
+  display: inline-block;
+}
+
+.plant_info{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 0 0 30px;
+}
+
+.plant_info h2{
+  margin: 0 0 30px 0;
+}
+
+textarea{
+  border: 1px solid rgba(48, 133, 153, 0.2);
+}
+
+.post_comment .post_button button{
+  display: block;
+}
+
+.post_options{
+  display: block;
+}
+
+.post_options a {
+  display: inline-block;
+}
+
+.post_options form{
+  display: inline-block;
+}
+
+
